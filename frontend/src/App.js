@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 import AddMoreModal from './feature/problems/addMoreModal';
 import Solutions from './feature/solutions/solutions';
+import { useRoutes } from 'hookrouter';
+import Problems from './feature/problems/problems';
+
+const routes = {
+	'/': () => <Problems />,
+	'/problems/:id': ({ id }) => <Solutions id={id} />,
+};
 
 function App() {
 	// useEffect(() => {
@@ -14,12 +20,13 @@ function App() {
 	// 		})
 	// 		.catch(err => console.log('err', err));
 	// });
-	return (
-		<div className="App">
-			<AddMoreModal />
-			<Solutions />
-		</div>
-	);
+	return useRoutes(routes);
+	// 	return (
+	// 		<div className="App">
+	// 			<AddMoreModal />
+	// 			<Solutions />
+	// 		</div>
+	// 	);
 }
 
 export default App;
