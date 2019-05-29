@@ -5,9 +5,12 @@ import AddMoreModal from './feature/problems/addMoreModal';
 import Solutions from './feature/solutions/solutions';
 import { useRoutes } from 'hookrouter';
 import Problems from './feature/problems/problems';
+import WithSidebar from './feature/sidebar/withSidebar';
+import Home from './feature/home/home';
 
 const routes = {
-	'/': () => <Problems />,
+	'/': () => WithSidebar(Home),
+	// '/problems': () => WithSidebar(Solutions),
 	'/problems/:id': ({ id }) => <Solutions id={id} />,
 };
 
